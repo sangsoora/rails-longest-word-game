@@ -19,7 +19,9 @@ class GamesController < ApplicationController
     @word = params[:word].upcase
     @grid = params[:grid].split(' ')
     @score = @word.length
+    session[:score] += @score
     @response = ''
+    raise
     if included?(@word, @grid)
       if english_word?(@word.upcase)
         @response = 'Congratulations! Dune is a valid English word'
